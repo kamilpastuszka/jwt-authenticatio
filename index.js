@@ -3,6 +3,7 @@ import express from "express";
 import { typeDefs } from "./typeDefs";
 import { resolvers } from "./resolvers";
 import bodyParser from "body-parser";
+import mongoose from "mongoose";
 
 const server = new ApolloServer({
   typeDefs,
@@ -15,6 +16,15 @@ app.use(bodyParser.json());
 
 server.applyMiddleware({ app });
 
-app.listen(4000, () => {
-  console.log("server is listening on port 4000");
-});
+mongoose
+  .connect(
+    `mongodb+srv://${process.env.MONGO_USER}:${
+      process.env.MONGO_PASSWORD
+    }@cluster1-ydxcw.mongodb.net/${process.env.MONGO_DB}?retryWrites=true`
+  )
+  .then(() => {
+    app.listen(4000);
+  })
+  .catch(err => {
+    console.log(err);
+  });
