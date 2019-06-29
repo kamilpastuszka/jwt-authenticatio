@@ -2,7 +2,7 @@ node_modules
 
 npm-debug.log*
 
-mongodb.json*
+nodemon.json*
 
 .DS_Store
 .env.local

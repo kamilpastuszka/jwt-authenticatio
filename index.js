@@ -20,10 +20,10 @@ mongoose
   .connect(
     `mongodb+srv://${process.env.MONGO_USER}:${
       process.env.MONGO_PASSWORD
-    }@cluster1-ydxcw.mongodb.net/${process.env.MONGO_DB}?retryWrites=true`
+    }@cluster1-ydxcw.mongodb.net/test?retryWrites=true&w=majority`
   )
   .then(() => {
-    app.listen(4000);
+    app.listen(4000, () => console.log("server is running on port 3000"));
   })
   .catch(err => {
     console.log(err);
