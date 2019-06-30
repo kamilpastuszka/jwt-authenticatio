@@ -4,7 +4,7 @@ export const typeDefs = `
        email: String! 
     }
 
-       type Query {
+   type Query {
        user: User
     }
     
